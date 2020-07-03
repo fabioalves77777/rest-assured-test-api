@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.containsString;
 
 import org.junit.Test;
 
-import com.testapi.suporte.ParamsTheCatApi;
+import com.testapi.utilitarios.Params;
 
 import io.restassured.response.Response;
 
@@ -16,8 +16,8 @@ public class TestApiDesfavoritar {
 		String id = new TestApiFavoritar().favoritar();		
 		Response response = given()
 				.contentType("application/json")
-				.header("x-api-key", ParamsTheCatApi.key)
-				.pathParam("favourite_id", id).when().delete(ParamsTheCatApi.urlFavoritosPorId);
+				.header("x-api-key", Params.key)
+				.pathParam("favourite_id", id).when().delete(Params.urlFavoritosPorId);
 		System.out.println("DESFAVORITAR => " + response.body().asString());
 		response.then().body("message", containsString("SUCCESS")).statusCode(200);
 	}
@@ -25,8 +25,8 @@ public class TestApiDesfavoritar {
 	public void desfavoritar(String id) {
 		Response response = given()
 				.contentType("application/json")
-				.header("x-api-key", ParamsTheCatApi.key)
-				.pathParam("favourite_id", id).when().delete(ParamsTheCatApi.urlFavoritosPorId);
+				.header("x-api-key", Params.key)
+				.pathParam("favourite_id", id).when().delete(Params.urlFavoritosPorId);
 		System.out.println("DESFAVORITAR => " + response.body().asString());
 		response.then().body("message", containsString("SUCCESS")).statusCode(200);
 	}

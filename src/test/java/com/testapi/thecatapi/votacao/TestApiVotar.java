@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.containsString;
 
 import org.junit.Test;
 
-import com.testapi.suporte.ParamsTheCatApi;
+import com.testapi.utilitarios.Params;
 
 import io.restassured.response.Response;
 
@@ -15,9 +15,9 @@ public class TestApiVotar {
 	public void votarLoveItTest() {					
 		Response response = given()
 				.contentType("application/json")
-				.header("x-api-key", ParamsTheCatApi.key)
-				.body(ParamsTheCatApi.bodyVotarLoveIt)
-				.when().post(ParamsTheCatApi.urlVotos);
+				.header("x-api-key", Params.key)
+				.body(Params.bodyVotarLoveIt)
+				.when().post(Params.urlVotos);
 		System.out.println("VOTO LOVE IT => " + response.body().asString());
 		response.then().body("message", containsString("SUCCESS")).statusCode(200);		
 	}
@@ -26,9 +26,9 @@ public class TestApiVotar {
 	public void votarNopeItTest() {			
 		Response response = given()
 				.contentType("application/json")
-				.header("x-api-key", ParamsTheCatApi.key)
-				.body(ParamsTheCatApi.bodyVotarNopeIt)
-				.when().post(ParamsTheCatApi.urlVotos);
+				.header("x-api-key", Params.key)
+				.body(Params.bodyVotarNopeIt)
+				.when().post(Params.urlVotos);
 		System.out.println("VOTO NOPE IT => " + response.body().asString());
 		response.then().body("message", containsString("SUCCESS")).statusCode(200);		
 	}
@@ -36,9 +36,9 @@ public class TestApiVotar {
 	public String votarLoveIt() {					
 		Response response = given()
 				.contentType("application/json")
-				.header("x-api-key", ParamsTheCatApi.key)
-				.body(ParamsTheCatApi.bodyVotarLoveIt)
-				.when().post(ParamsTheCatApi.urlVotos);
+				.header("x-api-key", Params.key)
+				.body(Params.bodyVotarLoveIt)
+				.when().post(Params.urlVotos);
 		System.out.println("VOTO LOVE IT => " + response.body().asString());
 		response.then().body("message", containsString("SUCCESS")).statusCode(200);			
 		String id = response.jsonPath().getString("id");
@@ -48,9 +48,9 @@ public class TestApiVotar {
 	public String votarNopeIt() {			
 		Response response = given()
 				.contentType("application/json")
-				.header("x-api-key", ParamsTheCatApi.key)
-				.body(ParamsTheCatApi.bodyVotarNopeIt)
-				.when().post(ParamsTheCatApi.urlVotos);
+				.header("x-api-key", Params.key)
+				.body(Params.bodyVotarNopeIt)
+				.when().post(Params.urlVotos);
 		System.out.println("VOTO NOPE IT => " + response.body().asString());
 		response.then().body("message", containsString("SUCCESS")).statusCode(200);				
 		String id = response.jsonPath().getString("id");

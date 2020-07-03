@@ -1,12 +1,15 @@
-package com.testapi.suporte;
+package com.testapi.utilitarios;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class ParamsTheCatApi {
+public class Params {
 
+	// CALCULADORA
+	public static final String urlCalculadora = "http://www.dneonline.com/calculator.asmx";
+	
 	// CADASTRAR
-	public static final String UrlCadastro = "https://api.thecatapi.com/v1/user/passwordlesssignup";
+	public static final String urlCadastro = "https://api.thecatapi.com/v1/user/passwordlesssignup";
 	public static final String bodyCadastro = "{\"email\": \"fabioalves77777@gmail.com\", \"appDescription\": \"teste the cat api\"}";
 	
 	// CHAVE DO CADASTRO

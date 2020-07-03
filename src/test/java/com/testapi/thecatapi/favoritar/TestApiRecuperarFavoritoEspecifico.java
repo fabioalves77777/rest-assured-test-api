@@ -4,7 +4,7 @@ import static io.restassured.RestAssured.given;
 
 import org.junit.Test;
 
-import com.testapi.suporte.ParamsTheCatApi;
+import com.testapi.utilitarios.Params;
 
 import io.restassured.response.Response;
 
@@ -15,8 +15,8 @@ public class TestApiRecuperarFavoritoEspecifico {
 		String id = new TestApiFavoritar().favoritar();
 		Response response = given()
 				.contentType("application/json")
-				.header("x-api-key", ParamsTheCatApi.key)
-				.pathParam("favourite_id", id).when().get(ParamsTheCatApi.urlFavoritosPorId);
+				.header("x-api-key", Params.key)
+				.pathParam("favourite_id", id).when().get(Params.urlFavoritosPorId);
 		System.out.println("INFOS DO FAVORITO => " + response.body().asString());
 		response.then().statusCode(200);
 	}
@@ -24,8 +24,8 @@ public class TestApiRecuperarFavoritoEspecifico {
 	public void recuperaFavoritoEspecifico(String id) {
 		Response response = given()
 				.contentType("application/json")
-				.header("x-api-key", ParamsTheCatApi.key)
-				.pathParam("favourite_id", id).when().get(ParamsTheCatApi.urlFavoritosPorId);
+				.header("x-api-key", Params.key)
+				.pathParam("favourite_id", id).when().get(Params.urlFavoritosPorId);
 		System.out.println("INFOS DO FAVORITO => " + response.body().asString());
 		response.then().statusCode(200);
 	}
